@@ -13,12 +13,12 @@ app.listen(port,()=>{
 
 app.post('/api',(req,res)=>{
   let information = req.body.information;
-  console.log(information);
+  console.log('we get data from client!');
   const result = require('child_process').spawn('python3',['test.py',information]);
-result.stdout.on('data',function(pythonResult){
+  result.stdout.on('data',function(pythonResult){
   console.log(pythonResult.toString());
 });
-result.stderr.on('data',function(pythonResult){
+  result.stderr.on('data',function(pythonResult){
   console.log(pythonResult.toString());
 });
 });
